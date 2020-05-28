@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Shell.TabBarIsVisible="False"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="LottoMore.Views.NowPlayingPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="280"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <pancakeview:PancakeView Grid.RowSpan="6" BackgroundGradientAngle="45">
+            <pancakeview:PancakeView.BackgroundGradientStops>
+                
+                <pancakeview:GradientStop Color="#7A4E22" Offset="0.1" />
+                <pancakeview:GradientStop Color="#A76C30" Offset="0.4"/>
+                <pancakeview:GradientStop Color="#613100" Offset="1"/>
+            </pancakeview:PancakeView.BackgroundGradientStops>
+        </pancakeview:PancakeView>
+
+
+        <!--Top Part-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Image
+                HorizontalOptions="Start" Margin="10"
+                Source="nav_icon.png" Grid.Column="0"/>
+            <pancakeview:PancakeView
+                HorizontalOptions="End" BackgroundColor="Transparent"
+                Grid.Column="2" >
+                <Image Source="favourite_icon" Margin="10"/>
+            </pancakeview:PancakeView>
+        </Grid>
+
+        <!--Top Part-->
+
+        <Label Grid.Row="1" HorizontalOptions="Center"
+              
+               Text="Playing Now" FontSize="Subtitle"
+               FontAttributes="Bold"/>
+
+        <pancakeview:PancakeView Grid.Row="2">
+            <Grid>
+                
+                <Image Source="center_icon" />
+          
+         
+            </Grid>
+            
+        </pancakeview:PancakeView>
+        <StackLayout Grid.Row="3" HorizontalOptions="CenterAndExpand">
+            <Label Text="Where are we going" HorizontalTextAlignment="Center"
+                   FontSize="Subtitle" FontAttributes="Bold"/>
+            <Label HorizontalTextAlignment="Center" 
+                   
+                Text="Ghost Rider Beats" FontSize="Body"/>
+        </StackLayout>
+        
+        <!--Center Circle-->
+        <Slider WidthRequest="350"
+                Grid.Row="4"
+                BackgroundColor="Transparent" 
+                ThumbColor="{StaticResource YellowColor}"
+                MaximumTrackColor="#FFD007"
+                MinimumTrackColor="#FFD007" />
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="previous_icon" 
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"/>
+            <Image Grid.Column="1"
+                  
+                   Source="{Binding PlayButtonIcon}" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PlayPauseCommand}"
+                                          NumberOfTapsRequired="1"/>
+
+
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Column="2" Source="nextButton_icon" HorizontalOptions="Start"/>
+        </Grid>
+    </Grid>
+</ContentPage>
